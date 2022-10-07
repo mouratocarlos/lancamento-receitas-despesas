@@ -4,11 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "lista_sistema")
 public class ListaSistemaEntity {
@@ -55,5 +56,19 @@ public class ListaSistemaEntity {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public ListaSistemaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ListaSistemaEntity(Long id, String tipo, String codigo, String descricao) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.codigo = codigo;
+		this.descricao = descricao;
 	}	
+
 }

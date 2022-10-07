@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fluxo.caixa.dtos.ListaSistemaDto;
+import com.fluxo.caixa.dtos.RequisicaoListaSistemaDto;
 import com.fluxo.caixa.entities.ListaSistemaEntity;
 import com.fluxo.caixa.services.ListaSistemaService;
 
@@ -22,8 +22,8 @@ public class ListaSistemaResource {
 	private ListaSistemaService service;
 	
 	@GetMapping(value = "/tipo")
-	public ResponseEntity<List<ListaSistemaEntity>> findByTipo(@RequestBody ListaSistemaDto dto) {
-		List<ListaSistemaEntity> list = this.service.findByTipo(dto.getTipo());
+	public ResponseEntity<List<ListaSistemaEntity>> findByTipo(@RequestBody RequisicaoListaSistemaDto body) {
+		List<ListaSistemaEntity> list = this.service.findByTipo(body.getTipo());
 		return ResponseEntity.ok().body(list);
 	}
 	

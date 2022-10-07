@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListaSistemaDto {
+public class RequisicaoListaSistemaDto {
 	private String tipo;
 	
 	public String getTipo() {
