@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fluxo.caixa.dtos.MovimentacaoFinanceiraDto;
 import com.fluxo.caixa.dtos.RequisicaoMovimentacaoFinanceiraDto;
@@ -29,15 +30,17 @@ public class MovimentacaoFinanceiraResource {
 	@Autowired
 	private MovimentacaoFinanceiraService service;
 	
-	@GetMapping(value = "/data")
-	public ResponseEntity<List<MovimentacaoFinanceiraDto>> findByData(@RequestBody RequisicaoMovimentacaoFinanceiraDto body) {		
-		List<MovimentacaoFinanceiraDto> listMovimentacao = service.findByData(body.getData());
-		return ResponseEntity.ok().body(listMovimentacao);
-	}
-
 	@GetMapping
-	public ResponseEntity<List<MovimentacaoFinanceiraEntity>> findAll() {
-		List<MovimentacaoFinanceiraEntity> listMovimentacao = service.findAll();
+	public ResponseEntity<List<MovimentacaoFinanceiraDto>> findByData(@RequestParam(name = "data") String data) {
+		List<MovimentacaoFinanceiraDto> listMovimentacao;
+		
+		if (data.isEmpty()) {
+			listMovimentacao = service.findByData(LocalDateTime.now());						
+		} else {
+			LocalDateTime dataLocal = LocalDateTime.parse(data);
+			listMovimentacao = service.findByData(dataLocal);			
+		}
+		
 		return ResponseEntity.ok().body(listMovimentacao);
 	}
 	
