@@ -20,4 +20,9 @@ const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(BootstrapVue3);
 app.use(VueAxios, axios);
+
+const cors = require('cors');
+
+app.use(cors);
+
 app.mount('#app');

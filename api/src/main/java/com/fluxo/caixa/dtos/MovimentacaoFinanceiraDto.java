@@ -14,7 +14,16 @@ public class MovimentacaoFinanceiraDto {
 	private Long listaTipoEspecie;
 	private String formaBaixa;
 	private String tipoEspecie;
+	private String observacao;
 	
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -72,7 +81,7 @@ public class MovimentacaoFinanceiraDto {
 	}
 	
 	public MovimentacaoFinanceiraDto(Long id, LocalDateTime data, BigDecimal valor, Long listaFormaBaixa,
-			Long listaTipoEspecie, String formaBaixa, String tipoEspecie) {
+			Long listaTipoEspecie, String formaBaixa, String tipoEspecie, String observacao) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -81,6 +90,7 @@ public class MovimentacaoFinanceiraDto {
 		this.listaTipoEspecie = listaTipoEspecie;
 		this.formaBaixa = formaBaixa;
 		this.tipoEspecie = tipoEspecie;
+		this.observacao = observacao;
 	}
 
 	public MovimentacaoFinanceiraDto() {

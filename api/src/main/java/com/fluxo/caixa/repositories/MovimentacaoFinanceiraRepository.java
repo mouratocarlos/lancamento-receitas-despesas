@@ -12,7 +12,7 @@ public interface MovimentacaoFinanceiraRepository extends JpaRepository<Moviment
 	
 	@Query("select "
 			+ "   new com.fluxo.caixa.dtos.MovimentacaoFinanceiraDto"
-			+ "(MOF.id, MOF.data, MOF.valor, MOF.listaFormaBaixa.id, MOF.listaTipoEspecie.id, MOF.listaFormaBaixa.descricao, MOF.listaTipoEspecie.descricao) "
+			+ "(MOF.id, MOF.data, MOF.valor, MOF.listaFormaBaixa.id, MOF.listaTipoEspecie.id, MOF.listaFormaBaixa.descricao, MOF.listaTipoEspecie.descricao, MOF.observacao) "
 			+ "  from MovimentacaoFinanceiraEntity MOF "
 			+ " where extract(year from MOF.data) = :year "
 			+ "   and extract(month from MOF.data) = :month "
