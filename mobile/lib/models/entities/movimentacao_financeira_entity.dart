@@ -25,4 +25,15 @@ class MovimentacaoFinanceiraEntity {
       observacao: json["observacao"] as String,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'data': data,
+      'valor': valor,
+      'listaFormaBaixa': listaFormaBaixa,
+      'listaTipoEspecie': listaTipoEspecie,
+      'observacao': observacao,
+    };
+  }
 }
